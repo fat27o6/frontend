@@ -1,27 +1,29 @@
 import axios from "axios"
+// const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = "https://movies-reviews-s3l8.onrender.com";
 
 class MovieDataService{
   getAll(page = 0){
-    return axios.get(`http://localhost:8000/movies?page=${page}`)
+    return axios.get(`${API_BASE_URL}/movies?page=${page}`)
     //return axios.get(`http://localhost:5000/movies?`, {params: {page: page}})
   }
   get(id){
-    return axios.get(`http://localhost:8000/movies/${id}`)
+    return axios.get(`${API_BASE_URL}/movies/${id}`)
   }
   find(query, by = "title", page = 0){
-    return axios.get(`http://localhost:8000/movies?${by}=${query}&page=${page}`)
+    return axios.get(`${API_BASE_URL}/movies?${by}=${query}&page=${page}`)
   }
   createReview(data){
-    return axios.post("http://localhost:8000/reviews", data)
+    return axios.post(`${API_BASE_URL}/reviews`, data)
   }
   updateReview(data){
-    return axios.put("http://localhost:8000/reviews", data)
+    return axios.put(`${API_BASE_URL}/reviews`, data)
   }
   deleteReview(data){
-    return axios.delete("http://localhost:8000/reviews", data)
+    return axios.delete(`${API_BASE_URL}/reviews`, data)
   }
   getRatings(){
-    return axios.get("http://localhost:8000/movies/ratings")
+    return axios.get(`${API_BASE_URL}/movies/ratings`)
   }
 }
 const movieDataServiceInstance = new MovieDataService()
